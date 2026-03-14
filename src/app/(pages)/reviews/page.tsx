@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ReviewSchema } from '@/components/seo/ReviewSchema'
 
 export const metadata: Metadata = {
   title: 'Patient Reviews | Dr. Ravindra Kumar Sharma – Best Cardiac Surgeon in Jaipur',
@@ -10,6 +11,7 @@ import { ReviewsClient } from '@/components/sections/ReviewsClient'
 export default function ReviewsPage() {
   return (
     <main>
+      <ReviewSchema />
       <ReviewsClient />
     </main>
   )
