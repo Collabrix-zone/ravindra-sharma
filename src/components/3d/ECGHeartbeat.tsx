@@ -55,21 +55,18 @@ function HeartbeatLine() {
     progressRef.current = (progressRef.current + delta * 0.4) % 1
 
     if (lineRef.current) {
-      const material = lineRef.current.material as THREE.LineBasicMaterial
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const material = lineRef.current.material as any
       material.dashOffset = -progressRef.current * 20
     }
   })
 
-  return (
-    <line ref={lineRef as any} geometry={geometry}>
-      <lineBasicMaterial
-        color="#C41E3A"
-        linewidth={2}
-        transparent
-        opacity={0.9}
-      />
-    </line>
-  )
+  const lineObject = useMemo(() => {
+    const mat = new THREE.LineBasicMaterial({ color: '#C41E3A', linewidth: 2, transparent: true, opacity: 0.9 })
+    return new THREE.Line(geometry, mat)
+  }, [geometry])
+
+  return <primitive ref={lineRef as any} object={lineObject} />
 }
 
 function ParticleField() {
