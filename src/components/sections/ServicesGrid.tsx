@@ -58,48 +58,65 @@ export function ServicesGrid() {
   const [expanded, setExpanded] = useState<number | null>(null)
 
   return (
-    <section className="py-24 bg-[#0d1120]">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section
+      className="py-16 sm:py-20 lg:py-24 bg-[#0D1120]"
+      aria-labelledby="services-grid-heading"
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 id="services-grid-heading" className="sr-only">All cardiac surgery services</h2>
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
           {services.map((s, i) => {
             const Icon = s.icon
             const isOpen = expanded === i
             return (
-              <motion.div
-                key={i}
+              <motion.li
+                key={s.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:border-white/20 transition-all duration-300 cursor-pointer"
-                onClick={() => setExpanded(isOpen ? null : i)}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:border-white/20 transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${s.color}15`, border: `1px solid ${s.color}30` }}>
-                  <Icon className="w-6 h-6" style={{ color: s.color }} />
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                  style={{ backgroundColor: `${s.color}15`, border: `1px solid ${s.color}30` }}
+                  aria-hidden="true"
+                >
+                  <Icon className="w-6 h-6" style={{ color: s.color }} aria-hidden="true" />
                 </div>
                 <h3 className="font-playfair text-xl font-bold text-white mb-1">{s.title}</h3>
-                <p className="font-inter text-xs mb-3" style={{ color: s.color }}>{s.subtitle}</p>
-                <p className="font-inter text-sm text-[#A0AEC0] leading-relaxed line-clamp-3">{s.description}</p>
+                <p className="font-inter text-xs mb-3 font-semibold" style={{ color: s.color }}>{s.subtitle}</p>
+                <p className="font-inter text-sm text-[#CBD5E0] leading-relaxed line-clamp-3">{s.description}</p>
 
-                <button className="mt-4 flex items-center gap-1 font-inter text-sm font-semibold" style={{ color: s.color }}>
+                <button
+                  className="mt-4 flex items-center gap-1 font-inter text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] rounded-sm min-h-[44px] px-1"
+                  style={{ color: s.color }}
+                  onClick={() => setExpanded(isOpen ? null : i)}
+                  aria-expanded={isOpen}
+                  aria-controls={`service-details-${i}`}
+                >
                   {isOpen ? 'Show Less' : 'Learn More'}
-                  <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    aria-hidden="true"
+                  />
                 </button>
 
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div
+                      id={`service-details-${i}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="font-inter text-sm text-[#A0AEC0] mt-4 leading-relaxed">{s.description}</p>
-                      <ul className="mt-4 space-y-2">
-                        {s.highlights.map((h, j) => (
-                          <li key={j} className="flex items-center gap-2 font-inter text-sm text-white/70">
-                            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: s.color }} />
+                      <p className="font-inter text-sm text-[#CBD5E0] mt-4 leading-relaxed">{s.description}</p>
+                      <ul className="mt-4 space-y-2" role="list" aria-label={`Key highlights for ${s.title}`}>
+                        {s.highlights.map((h) => (
+                          <li key={h} className="flex items-center gap-2 font-inter text-sm text-white/80">
+                            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: s.color }} aria-hidden="true" />
                             {h}
                           </li>
                         ))}
@@ -107,10 +124,10 @@ export function ServicesGrid() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </motion.li>
             )
           })}
-        </div>
+        </ul>
       </div>
     </section>
   )

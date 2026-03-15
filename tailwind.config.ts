@@ -9,15 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        playfair: ["Playfair Display", "serif"],
-        inter: ["Inter", "sans-serif"],
+        inter: ["var(--font-inter)", "Inter", "sans-serif"],
+        playfair: ["var(--font-playfair)", "Playfair Display", "serif"],
       },
       colors: {
-        background: "#080C18",
-        "primary-accent": "#C41E3A",
-        "secondary-accent": "#D4AF37",
-        "text-primary": "#FFFFFF",
-        "text-secondary": "#A0AEC0",
+        navy: {
+          dark: "#080C18",
+          DEFAULT: "#0D1120",
+        },
+        crimson: {
+          DEFAULT: "#C41E3A",
+          dark: "#a01830",
+        },
+        gold: {
+          DEFAULT: "#D4AF37",
+          dark: "#b8952d",
+        },
       },
     },
   },
