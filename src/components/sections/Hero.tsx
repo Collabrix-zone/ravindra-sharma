@@ -3,18 +3,17 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Phone, Calendar, ChevronDown } from 'lucide-react'
+import { Phone, Calendar, ChevronDown, Shield } from 'lucide-react'
 
 const ECGHeartbeat = dynamic(() => import('@/components/3d/ECGHeartbeat'), {
   ssr: false,
   loading: () => <div className="w-full h-full" aria-hidden="true" />,
 })
 
-const stats = [
-  { value: '7,000+', label: 'Open Heart Surgeries' },
-  { value: '44+', label: 'Years Experience' },
-  { value: '5,000+', label: 'CABG Surgeries' },
-  { value: '2,000+', label: 'Valve Surgeries' },
+const BADGES = [
+  "7,000+ Open Heart Surgeries",
+  "44+ Years Experience",
+  "Director CTVS, Eternal Hospital",
 ]
 
 export default function Hero() {
@@ -25,7 +24,8 @@ export default function Hero() {
         href="https://wa.me/917231044444"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] hover:bg-[#20bd5a] rounded-full flex items-center justify-center shadow-xl shadow-[#25D366]/30 transition-all duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080C18]"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-all duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080C18]"
+        style={{ background: "#25D366", boxShadow: "0 8px 24px rgba(37,211,102,0.35)" }}
         aria-label="Chat with Dr. Sharma on WhatsApp"
       >
         <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white" aria-hidden="true" focusable="false">
@@ -34,112 +34,149 @@ export default function Hero() {
       </a>
 
       <section
-        className="relative min-h-screen flex flex-col overflow-hidden bg-[#080C18]"
+        className="relative min-h-screen flex flex-col overflow-hidden"
+        style={{ background: "#080C18" }}
         aria-labelledby="hero-heading"
       >
         {/* 3D Background */}
         <div className="absolute inset-0 z-0" aria-hidden="true">
-          <ECGHeartbeat className="w-full h-full opacity-50" />
+          <ECGHeartbeat className="w-full h-full opacity-40" />
         </div>
 
-        {/* Gradient overlays */}
-        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#080C18]/70 via-[#080C18]/30 to-[#080C18]" aria-hidden="true" />
-        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#080C18]/80 via-transparent to-[#080C18]/80" aria-hidden="true" />
+        {/* Multi-layer gradient */}
+        <div className="absolute inset-0 z-[1]" aria-hidden="true" style={{ background: "linear-gradient(180deg, rgba(8,12,24,0.75) 0%, rgba(8,12,24,0.25) 40%, rgba(8,12,24,0.85) 80%, #080C18 100%)" }} />
+        <div className="absolute inset-0 z-[1]" aria-hidden="true" style={{ background: "linear-gradient(90deg, rgba(8,12,24,0.7) 0%, transparent 40%, transparent 60%, rgba(8,12,24,0.7) 100%)" }} />
+
+        {/* Radial glow */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-[#C41E3A]/8 blur-[120px] z-[1] pointer-events-none" aria-hidden="true" />
 
         {/* Hero Content */}
-        <div className="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-36">
+        <div className="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-28 pb-40">
           <div className="max-w-4xl mx-auto text-center w-full">
+
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-[#C41E3A]/10 border border-[#C41E3A]/40 rounded-full px-4 py-2 text-sm text-[#F87171] mb-6 font-inter font-medium"
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-inter font-medium mb-8"
+              style={{
+                background: "rgba(196,30,58,0.12)",
+                border: "1px solid rgba(196,30,58,0.35)",
+                color: "#FDA4AF",
+              }}
               role="text"
             >
-              <span className="w-2 h-2 bg-[#C41E3A] rounded-full animate-pulse" aria-hidden="true" />
+              <Shield className="w-3.5 h-3.5 text-[#C41E3A]" aria-hidden="true" />
               Director, CTVS — Eternal Hospital, Jaipur
             </motion.div>
 
-            {/* Heading */}
+            {/* Main heading */}
             <motion.h1
               id="hero-heading"
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="font-playfair text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1] tracking-tight"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="font-playfair font-bold text-white leading-[1.1] tracking-tight mb-6"
+              style={{ fontSize: "clamp(2.5rem, 8vw, 5.5rem)" }}
             >
               Dr. Ravindra
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C41E3A] to-[#D4AF37]">
+              <span
+                className="text-transparent bg-clip-text"
+                style={{ backgroundImage: "linear-gradient(135deg, #C41E3A 0%, #E05A6A 40%, #D4AF37 100%)" }}
+              >
                 Kumar Sharma
               </span>
             </motion.h1>
 
-            {/* Subheading */}
+            {/* Sub heading */}
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="font-inter text-base sm:text-lg md:text-xl text-[#CBD5E0] mb-10 max-w-2xl mx-auto leading-relaxed"
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="font-inter text-base sm:text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto"
+              style={{ color: "#94A3B8" }}
             >
-              44+ Years of Excellence in Cardiac Surgery
-              <span className="block text-white/70 mt-1 text-sm sm:text-base">7,000+ Open Heart Surgeries Performed</span>
+              Rajasthan&apos;s most trusted cardiac surgeon.
+              <span className="block mt-1 text-[#64748B] text-sm sm:text-base">
+                44+ years of excellence · 7,000+ lives saved
+              </span>
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.45 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6"
             >
               <Link
                 href="/appointment"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#C41E3A] to-[#a01830] hover:from-[#D4AF37] hover:to-[#b8952d] text-white font-inter font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[#C41E3A]/25 hover:shadow-[#D4AF37]/25 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#080C18] min-h-[52px] w-full sm:w-auto text-base"
+                className="inline-flex items-center justify-center gap-2 font-inter font-semibold text-white px-8 py-4 rounded-full transition-all duration-300 min-h-[52px] w-full sm:w-auto text-base hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#080C18]"
+                style={{
+                  background: "linear-gradient(135deg, #C41E3A 0%, #a01830 100%)",
+                  boxShadow: "0 8px 32px rgba(196,30,58,0.35)",
+                }}
               >
-                <Calendar className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                <Calendar className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
                 Book Appointment
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-inter font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#080C18] min-h-[52px] w-full sm:w-auto text-base"
+                className="inline-flex items-center justify-center gap-2 font-inter font-semibold text-white border border-white/25 hover:border-white/50 hover:bg-white/5 px-8 py-4 rounded-full transition-all duration-200 min-h-[52px] w-full sm:w-auto text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#080C18]"
               >
-                Learn More
+                About Dr. Sharma
               </Link>
             </motion.div>
 
-            {/* Phone link */}
-            <motion.a
-              href="tel:+917231044444"
+            {/* Phone */}
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="inline-flex items-center gap-2 mt-6 text-[#CBD5E0] hover:text-white transition-colors font-inter text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] rounded-sm px-2 py-1 min-h-[44px]"
-              aria-label="Call +91 72310 44444"
+              transition={{ delay: 0.55 }}
+              className="flex items-center justify-center gap-2"
             >
-              <Phone className="w-4 h-4" aria-hidden="true" />
-              +91-7231044444
-            </motion.a>
+              <a
+                href="tel:+917231044444"
+                className="inline-flex items-center gap-2 font-inter text-sm text-[#64748B] hover:text-[#94A3B8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] rounded-sm px-2 py-1 min-h-[44px]"
+                aria-label="Call +91 72310 44444"
+              >
+                <Phone className="w-3.5 h-3.5" aria-hidden="true" />
+                +91-7231044444
+              </a>
+              <span className="text-white/15 text-xs">·</span>
+              <span className="font-inter text-xs text-[#4A5568]">Mon–Sat, 10AM–4PM</span>
+            </motion.div>
           </div>
         </div>
 
         {/* Stats bar */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="relative z-10 border-t border-white/10 bg-[#080C18]/80 backdrop-blur-md"
+          transition={{ duration: 0.6, delay: 0.65 }}
+          className="relative z-10"
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            background: "rgba(8,12,24,0.85)",
+            backdropFilter: "blur(16px)",
+          }}
           role="region"
           aria-label="Key statistics"
         >
-          <dl className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
-            {stats.map((s, i) => (
-              <div key={i}>
-                <dd className="font-playfair text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#C41E3A] to-[#D4AF37]">
+          <dl className="max-w-5xl mx-auto px-4 sm:px-6 py-5 sm:py-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-x-0 md:divide-x divide-white/5">
+            {[
+              { value: "7,000+", label: "Open Heart Surgeries" },
+              { value: "44+", label: "Years Experience" },
+              { value: "5,000+", label: "CABG Surgeries" },
+              { value: "2,000+", label: "Valve Surgeries" },
+            ].map((s, i) => (
+              <div key={i} className="px-2">
+                <dd className="font-playfair text-xl sm:text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#C41E3A] to-[#D4AF37]">
                   {s.value}
                 </dd>
-                <dt className="font-inter text-xs sm:text-sm text-[#CBD5E0] mt-1">{s.label}</dt>
+                <dt className="font-inter text-xs text-[#4A5568] mt-1">{s.label}</dt>
               </div>
             ))}
           </dl>
@@ -149,13 +186,13 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-36 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-white/30 pointer-events-none"
+          transition={{ delay: 1.3 }}
+          className="absolute bottom-28 sm:bottom-32 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 pointer-events-none"
           aria-hidden="true"
         >
-          <span className="font-inter text-xs uppercase tracking-widest">Scroll</span>
-          <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
-            <ChevronDown className="w-4 h-4" />
+          <span className="font-inter text-[10px] uppercase tracking-[0.2em] text-white/20">Scroll</span>
+          <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}>
+            <ChevronDown className="w-4 h-4 text-white/20" />
           </motion.div>
         </motion.div>
       </section>
