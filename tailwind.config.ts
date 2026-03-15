@@ -1,3 +1,5 @@
+// Tailwind v4 uses CSS @theme for configuration — this file is kept only for
+// editor tooling compatibility. Do not add theme values here; use globals.css @theme instead.
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -7,19 +9,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        playfair: ["Playfair Display", "serif"],
-        inter: ["Inter", "sans-serif"],
-      },
-      colors: {
-        background: "#080C18",
-        "primary-accent": "#C41E3A",
-        "secondary-accent": "#D4AF37",
-        "text-primary": "#FFFFFF",
-        "text-secondary": "#A0AEC0",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };

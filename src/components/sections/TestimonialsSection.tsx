@@ -1,148 +1,163 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import SectionHeading from "@/components/ui/SectionHeading";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Quote, Star, ArrowRight } from "lucide-react";
 
-const TESTIMONIALS = [
-  {
-    name: "Priya Mehta",
-    treatment: "Laparoscopic Cholecystectomy",
-    rating: 5,
-    review:
-      "Dr. Sharma's expertise and calm demeanour put me completely at ease before surgery. My recovery was remarkably quick. I'm back to normal life within 10 days. Truly grateful.",
-    location: "Mumbai",
-  },
-  {
-    name: "Ramesh Gupta",
-    treatment: "Colon Cancer Surgery",
-    rating: 5,
-    review:
-      "After my cancer diagnosis, I was terrified. Dr. Sharma explained everything patiently, performed a complex surgery flawlessly, and his team's care during recovery was exceptional.",
-    location: "Delhi",
-  },
-  {
-    name: "Sunita Verma",
-    treatment: "Hernia Repair (Laparoscopic)",
-    rating: 5,
-    review:
-      "I had been suffering from hernia for 2 years before meeting Dr. Sharma. The minimally invasive procedure meant I had almost no pain and was discharged in just one day. Outstanding!",
-    location: "Jaipur",
-  },
-  {
-    name: "Arjun Kapoor",
-    treatment: "Emergency Appendectomy",
-    rating: 5,
-    review:
-      "I came in at 2 AM with severe pain. Dr. Sharma operated immediately and saved me from complications. The entire team was professional and reassuring throughout.",
-    location: "Pune",
-  },
-  {
-    name: "Kavitha Rao",
-    treatment: "Thyroid Surgery",
-    rating: 5,
-    review:
-      "Dr. Sharma was meticulous, thorough, and incredibly kind. He addressed all my worries pre-surgery and the outcome was perfect. The scar is minimal and healing beautifully.",
-    location: "Hyderabad",
-  },
+const REVIEWS = [
+  { name: "Ramesh Gupta", loc: "Jaipur", proc: "Bypass Surgery (CABG)", stars: 5, text: "Dr. Sharma performed my bypass surgery with exceptional skill. His calm demeanor and expertise gave our family tremendous confidence. I am fully recovered within 3 months. Truly the best." },
+  { name: "Sunita Devi", loc: "Ajmer", proc: "Valve Replacement", stars: 5, text: "My husband needed urgent valve replacement. Dr. Sharma explained everything clearly and the operation was a complete success. The post-operative care was excellent. We are forever grateful." },
+  { name: "Mahesh Kumar Joshi", loc: "Kota", proc: "Off-Pump CABG", stars: 5, text: "After being told I needed open heart surgery, I was terrified. Dr. Sharma's experience and compassion put me at ease. The beating heart technique meant faster recovery. Highly recommend." },
+  { name: "Priya Sharma", loc: "Bikaner", proc: "Congenital Heart Surgery", stars: 5, text: "My father had a complex congenital condition other doctors called too risky. Dr. Sharma took on the case and performed a miracle. We drove from Bikaner because we trusted no one else." },
+  { name: "Anil Verma", loc: "Jodhpur", proc: "Triple Vessel CABG", stars: 5, text: "Triple vessel disease at 58. Dr. Sharma performed off-pump CABG and I was discharged in 6 days. His surgical precision and the team at Eternal Hospital are world-class." },
+  { name: "Rajendra Prasad", loc: "Jaipur", proc: "Bypass Surgery", stars: 5, text: "At 72, many doctors hesitated. Dr. Sharma assessed me thoroughly and proceeded with confidence. Four months later I am walking 3 km daily. A truly exceptional surgeon." },
 ];
 
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-1">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg
-          key={i}
-          className={`w-4 h-4 ${i < rating ? "text-[#D4AF37]" : "text-white/20"}`}
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
 export default function TestimonialsSection() {
-  const [active, setActive] = useState(0);
-
-  const prev = () => setActive((a) => (a - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  const next = () => setActive((a) => (a + 1) % TESTIMONIALS.length);
-
   return (
-    <section className="py-24 lg:py-32 bg-[#050810] relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#C41E3A]/5 blur-3xl pointer-events-none" />
-
-      <div className="container mx-auto px-6 lg:px-12">
-        <SectionHeading
-          eyebrow="Patient Stories"
-          title="Voices of Recovery"
-          subtitle="Real experiences from patients whose lives have been transformed through expert surgical care."
-          centered
-          className="mb-16"
-        />
-
-        <div className="max-w-3xl mx-auto">
-          <div className="relative min-h-[320px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.4 }}
-                className="bg-white/[0.03] border border-white/10 rounded-3xl p-10 text-center"
-              >
-                <StarRating rating={TESTIMONIALS[active].rating} />
-                <blockquote className="mt-6 font-playfair text-xl text-white leading-relaxed italic">
-                  &ldquo;{TESTIMONIALS[active].review}&rdquo;
-                </blockquote>
-                <div className="mt-8">
-                  <p className="font-inter font-semibold text-white">{TESTIMONIALS[active].name}</p>
-                  <p className="font-inter text-sm text-[#D4AF37] mt-1">{TESTIMONIALS[active].treatment}</p>
-                  <p className="font-inter text-xs text-[#A0AEC0] mt-1">{TESTIMONIALS[active].location}</p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Controls */}
-          <div className="flex items-center justify-center gap-6 mt-8">
-            <button
-              onClick={prev}
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-[#C41E3A] hover:text-[#C41E3A] transition-colors"
-              aria-label="Previous"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            <div className="flex gap-2">
-              {TESTIMONIALS.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    i === active ? "w-8 bg-[#C41E3A]" : "w-2 bg-white/20"
-                  }`}
-                  aria-label={`Go to testimonial ${i + 1}`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={next}
-              className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-[#C41E3A] hover:text-[#C41E3A] transition-colors"
-              aria-label="Next"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+    <section
+      className="w-full bg-[#080C18] border-t border-white/[0.06]"
+      aria-labelledby="testimonials-heading"
+    >
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4 }}
+            className="font-inter text-xs font-bold uppercase tracking-widest text-[#D4AF37] mb-3"
+          >
+            Patient Stories
+          </motion.p>
+          <motion.h2
+            id="testimonials-heading"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
+          >
+            Lives{" "}
+            <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #C41E3A, #D4AF37)' }}>
+              Transformed
+            </span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="font-inter text-base text-[#64748B] leading-relaxed"
+          >
+            Real experiences from patients across Rajasthan who chose Dr. Sharma for cardiac care.
+          </motion.p>
         </div>
+
+        {/* Rating banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 mb-12 py-5 px-6 rounded-2xl border border-white/[0.07] max-w-lg mx-auto"
+          style={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
+        >
+          <div className="flex items-center gap-3">
+            <p className="font-playfair text-4xl font-bold text-white">4.9</p>
+            <div>
+              <div className="flex gap-0.5 mb-1">
+                {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 fill-[#D4AF37] text-[#D4AF37]" aria-hidden="true" />)}
+              </div>
+              <p className="font-inter text-xs text-[#64748B]">Average rating</p>
+            </div>
+          </div>
+          <div className="hidden sm:block w-px h-10 bg-white/10" aria-hidden="true" />
+          <div className="text-center">
+            <p className="font-playfair text-2xl font-bold text-white">500+</p>
+            <p className="font-inter text-xs text-[#64748B] mt-0.5">Reviews</p>
+          </div>
+          <div className="hidden sm:block w-px h-10 bg-white/10" aria-hidden="true" />
+          <div className="text-center">
+            <p className="font-playfair text-2xl font-bold text-white">99%</p>
+            <p className="font-inter text-xs text-[#64748B] mt-0.5">Satisfaction</p>
+          </div>
+        </motion.div>
+
+        {/* Reviews grid */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
+          {REVIEWS.map((r, i) => {
+            const initials = r.name.split(" ").map((n) => n[0]).join("").slice(0, 2);
+            return (
+              <li key={i}>
+                <motion.article
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.5, delay: i * 0.07 }}
+                  className="flex flex-col h-full rounded-2xl p-6 border border-white/[0.08] transition-all duration-300 hover:border-white/[0.14]"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
+                  aria-label={`Review by ${r.name}`}
+                >
+                  {/* Quote */}
+                  <Quote className="w-7 h-7 mb-4 flex-shrink-0" style={{ color: 'rgba(196,30,58,0.35)' }} aria-hidden="true" />
+
+                  {/* Stars */}
+                  <div className="flex gap-0.5 mb-4" role="img" aria-label={`${r.stars} out of 5 stars`}>
+                    {Array.from({ length: r.stars }).map((_, j) => (
+                      <Star key={j} className="w-3.5 h-3.5 fill-[#D4AF37] text-[#D4AF37]" aria-hidden="true" />
+                    ))}
+                  </div>
+
+                  {/* Review text */}
+                  <blockquote className="font-inter text-sm text-[#94A3B8] leading-[1.75] flex-1 mb-6">
+                    &ldquo;{r.text}&rdquo;
+                  </blockquote>
+
+                  {/* Footer */}
+                  <div className="border-t border-white/[0.06] pt-4 flex items-center gap-3">
+                    <div
+                      className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold font-playfair text-white flex-shrink-0"
+                      style={{ background: 'linear-gradient(135deg, #C41E3A 0%, #D4AF37 100%)' }}
+                      aria-hidden="true"
+                    >
+                      {initials}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <cite className="not-italic">
+                        <p className="font-inter text-sm font-semibold text-white truncate">{r.name}</p>
+                        <p className="font-inter text-xs text-[#64748B]">{r.loc}</p>
+                      </cite>
+                    </div>
+                    <span
+                      className="font-inter text-xs px-2 py-1 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: 'rgba(196,30,58,0.1)', color: '#F87171' }}
+                    >
+                      {r.proc.split("(")[0].trim()}
+                    </span>
+                  </div>
+                </motion.article>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* More reviews link */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-10 text-center"
+        >
+          <Link
+            href="/reviews"
+            className="inline-flex items-center gap-2 font-inter text-sm font-medium text-[#64748B] hover:text-[#94A3B8] transition-colors min-h-[44px] px-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] rounded-sm"
+          >
+            Read all patient reviews <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

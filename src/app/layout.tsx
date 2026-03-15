@@ -7,13 +7,13 @@ import { PhysicianSchema } from "@/components/seo/PhysicianSchema";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--inter",
   display: "swap",
 });
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--playfair",
   display: "swap",
   weight: ["400", "500", "600", "700", "800", "900"],
 });
@@ -56,8 +56,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-inter bg-[#080C18] text-white antialiased">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
         <PhysicianSchema />
       </body>

@@ -30,28 +30,63 @@ export function ServicesFAQ() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="py-24 bg-[#080C18]">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl font-bold text-white">Frequently Asked <span className="text-[#C41E3A]">Questions</span></h2>
+    <section
+      className="py-16 sm:py-20 lg:py-24 bg-[#080C18]"
+      aria-labelledby="faq-heading"
+    >
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2
+            id="faq-heading"
+            className="font-playfair text-3xl sm:text-4xl font-bold text-white"
+          >
+            Frequently Asked <span className="text-[#C41E3A]">Questions</span>
+          </h2>
         </div>
-        <div className="space-y-3">
+
+        <dl className="space-y-3">
           {faqs.map((faq, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="bg-white/5 border border-white/10 rounded-xl overflow-hidden">
-              <button onClick={() => setOpen(open === i ? null : i)} className="w-full text-left p-6 flex items-center justify-between gap-4">
-                <span className="font-inter text-sm md:text-base font-semibold text-white">{faq.q}</span>
-                <ChevronDown className={`w-5 h-5 text-[#C41E3A] flex-shrink-0 transition-transform ${open === i ? 'rotate-180' : ''}`} />
-              </button>
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-all duration-200"
+            >
+              <dt>
+                <button
+                  onClick={() => setOpen(open === i ? null : i)}
+                  className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#C41E3A] min-h-[56px]"
+                  aria-expanded={open === i}
+                  aria-controls={`faq-answer-${i}`}
+                  id={`faq-question-${i}`}
+                >
+                  <span className="font-inter text-sm sm:text-base font-semibold text-white leading-snug">{faq.q}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-[#C41E3A] flex-shrink-0 transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`}
+                    aria-hidden="true"
+                  />
+                </button>
+              </dt>
               <AnimatePresence>
                 {open === i && (
-                  <motion.div initial={{ height: 0 }} animate={{ height: 'auto' }} exit={{ height: 0 }} className="overflow-hidden">
-                    <p className="px-6 pb-6 font-inter text-sm text-[#A0AEC0] leading-relaxed">{faq.a}</p>
-                  </motion.div>
+                  <motion.dd
+                    id={`faq-answer-${i}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${i}`}
+                    initial={{ height: 0 }}
+                    animate={{ height: 'auto' }}
+                    exit={{ height: 0 }}
+                    className="overflow-hidden"
+                  >
+                    <p className="px-5 sm:px-6 pb-5 sm:pb-6 font-inter text-sm text-[#CBD5E0] leading-relaxed">{faq.a}</p>
+                  </motion.dd>
                 )}
               </AnimatePresence>
             </motion.div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   )
