@@ -7,13 +7,13 @@ import { PhysicianSchema } from "@/components/seo/PhysicianSchema";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--inter",
   display: "swap",
 });
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--playfair",
   display: "swap",
   weight: ["400", "500", "600", "700", "800", "900"],
 });

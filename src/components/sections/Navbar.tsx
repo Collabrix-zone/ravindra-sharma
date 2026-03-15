@@ -123,7 +123,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     aria-current={isActive ? 'page' : undefined}
-                    className={`block font-inter text-base px-4 py-3 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] min-h-[44px] flex items-center ${
+                    className={`flex items-center font-inter text-base px-4 py-3 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] min-h-[44px] ${
                       isActive
                         ? 'text-white bg-white/10 font-semibold'
                         : 'text-[#CBD5E0] hover:text-white hover:bg-white/5'
