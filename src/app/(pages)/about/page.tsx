@@ -5,7 +5,7 @@ import { CareerTimeline } from '@/components/sections/CareerTimeline'
 import { Memberships } from '@/components/sections/Memberships'
 
 export const metadata: Metadata = {
-  title: 'About Dr. Ravindra Kumar Sharma | Best Cardiac Surgeon in Jaipur',
+  title: 'About Dr. Ravindra Kumar Sharma',
   description: 'Learn about Dr. R.K. Sharma — Director CTVS, Eternal Hospital Jaipur. Trained at CMC Vellore & Uppsala Sweden. 44+ years experience, 7,000+ heart surgeries performed.',
   openGraph: {
     title: 'About Dr. Ravindra Kumar Sharma | Cardiac Surgeon Jaipur',
