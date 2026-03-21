@@ -60,9 +60,13 @@ export function PhysicianSchema() {
       ],
       "url": "https://www.eternalhospital.com/sanganer/"
     },
+    // sameAs — replace placeholder URLs below with real profile links
     "sameAs": [
       "https://www.eternalhospital.com/sanganer/doctor/dr-ravindra-k-sharma",
-      "https://www.hexahealth.com/jaipur/doctor/dr-ravindra-kumar-sharma-cardiothoracic-and-vascular-surgery"
+      "https://www.hexahealth.com/jaipur/doctor/dr-ravindra-kumar-sharma-cardiothoracic-and-vascular-surgery",  // HexaHealth
+      "https://www.linkedin.com/in/REPLACE-WITH-ACTUAL-LINKEDIN-SLUG",         // LinkedIn — replace with real URL
+      "https://www.practo.com/jaipur/doctor/REPLACE-WITH-ACTUAL-PRACTO-SLUG",  // Practo — replace with real URL
+      "https://www.google.com/maps?cid=REPLACE-WITH-GOOGLE-BUSINESS-CID"       // Google Business Profile — replace with real URL
     ]
   }
 

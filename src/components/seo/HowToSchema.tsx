@@ -9,32 +9,32 @@ export function HowToSchema() {
       {
         "@type": "HowToStep",
         "position": 1,
-        "name": "ICU and Hospital Stay (Days 1–7)",
-        "text": "Spend 1–2 days in the ICU connected to a ventilator, heart monitors, and IV lines. Once stable, move to the cardiac ward. Physiotherapists help you sit up, stand, and take first steps by day 2 or 3. Most patients are discharged within 5–7 days."
+        "name": "Hospital Recovery (Days 1–7)",
+        "text": "ICU monitoring for 1–2 days with ventilator, heart monitors, and IV lines. Once stable, move to the cardiac ward. Physiotherapists help you sit up, stand, and begin walking by day 2 or 3. Most patients are discharged within 5–7 days."
       },
       {
         "@type": "HowToStep",
         "position": 2,
-        "name": "First Two Weeks at Home",
+        "name": "Early Home Recovery (Weeks 1–2)",
         "text": "Rest is important but avoid prolonged bed rest — take short walks around the house. Keep the chest incision clean and dry, watch for infection signs. Follow prescribed pain medication. No driving for 4–6 weeks and no lifting anything heavier than 2 kg."
       },
       {
         "@type": "HowToStep",
         "position": 3,
-        "name": "Weeks 3–6: Gradually Increasing Activity",
-        "text": "Begin cardiac rehabilitation exercises as advised by your doctor. Slowly increase walking distance each day. Light household activities are permitted. Avoid excessive stair climbing in the first few weeks."
+        "name": "Increasing Activity (Weeks 3–6)",
+        "text": "Begin cardiac rehabilitation exercises as advised by your doctor. Light household tasks are permitted. Slowly increase walking distance each day. Avoid excessive stair climbing in the first few weeks."
       },
       {
         "@type": "HowToStep",
         "position": 4,
-        "name": "2–3 Months: Return to Normal Life",
-        "text": "Most patients can return to office work at 6–8 weeks, driving at 4–6 weeks (once off strong pain medications), sexual activity at 4–6 weeks, and full physical activity by 3 months."
+        "name": "Regaining Strength (Months 2–3)",
+        "text": "Most patients can return to desk work at 6–8 weeks. Follow-up echocardiogram to assess heart function. Driving resumes at 4–6 weeks (once off strong pain medications). Full physical activity by 3 months."
       },
       {
         "@type": "HowToStep",
         "position": 5,
-        "name": "Long-Term Recovery and Follow-Up",
-        "text": "Follow a low-saturated-fat, low-salt diet with plenty of fruits, vegetables, and whole grains. Attend follow-up appointments at 1 week, 1 month, 3 months, and annually. Contact Dr. Sharma's team immediately for fever above 38.5°C, wound discharge, sudden chest pain, or irregular heartbeat."
+        "name": "Long-Term Care",
+        "text": "Resume normal activity with a heart-healthy lifestyle. Follow a low-saturated-fat, low-salt diet. Attend annual cardiac reviews. Contact Dr. Sharma's team immediately for fever above 38.5°C, wound discharge, sudden chest pain, or irregular heartbeat. Call +91-7231044444."
       }
     ]
   }
