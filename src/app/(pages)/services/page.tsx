@@ -5,8 +5,8 @@ import { ServicesFAQ } from '@/components/sections/ServicesFAQ'
 import { FAQSchema } from '@/components/seo/FAQSchema'
 
 export const metadata: Metadata = {
-  title: 'Cardiac Surgery Services | Dr. Ravindra Kumar Sharma – Best Cardiac Surgeon in Jaipur',
-  description: 'Cardiac surgery services by Dr. R.K. Sharma at Eternal Hospital Jaipur — CABG, valve repair, aortic surgery, minimally invasive procedures. Call +91-7231044444 to consult.',
+  title: 'Cardiac Surgery Services in Jaipur | Dr. R.K. Sharma',
+  description: 'Cardiac surgery services in Jaipur by Dr. R.K. Sharma: CABG, valve surgery, aortic surgery, minimally invasive & congenital heart surgery. Call +91-7231044444.',
   alternates: { canonical: '/services' },
 }
 

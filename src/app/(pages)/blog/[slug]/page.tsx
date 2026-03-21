@@ -7,20 +7,56 @@ import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
 import { HowToSchema } from '@/components/seo/HowToSchema'
 import { FAQSchema } from '@/components/seo/FAQSchema'
 
-const posts: Record<string, { title: string; date: string; isoDate: string; readTime: string; category: string; content: string; description: string; faqs: { q: string; a: string }[] }> = {
+const TODAY = '2025-03-21'
+
+const relatedPosts: Record<string, { slug: string; title: string; anchor: string }[]> = {
+  'what-is-bypass-surgery': [
+    { slug: 'beating-heart-cabg-vs-conventional', title: 'Off-Pump (Beating Heart) CABG vs. Conventional Bypass Surgery', anchor: 'Learn how off-pump CABG compares to conventional bypass surgery' },
+    { slug: 'recovery-after-open-heart-surgery', title: 'Recovery After Open Heart Surgery: What to Expect', anchor: 'What to expect during recovery after bypass surgery' },
+    { slug: 'signs-you-need-a-cardiac-surgeon', title: '10 Signs You Need to See a Cardiac Surgeon', anchor: '10 warning signs you may need a cardiac surgeon' },
+  ],
+  'signs-you-need-a-cardiac-surgeon': [
+    { slug: 'what-is-bypass-surgery', title: 'What is Bypass Surgery (CABG)? A Complete Guide', anchor: 'Complete guide to coronary artery bypass grafting (CABG)' },
+    { slug: 'valve-repair-vs-replacement', title: 'Valve Repair vs. Valve Replacement: Which is Better?', anchor: 'Valve repair vs. replacement — which approach is better?' },
+    { slug: 'recovery-after-open-heart-surgery', title: 'Recovery After Open Heart Surgery: What to Expect', anchor: 'What to expect during recovery after heart surgery' },
+  ],
+  'recovery-after-open-heart-surgery': [
+    { slug: 'what-is-bypass-surgery', title: 'What is Bypass Surgery (CABG)? A Complete Guide', anchor: 'Understand what bypass surgery involves before your procedure' },
+    { slug: 'heart-healthy-diet-india', title: 'Heart-Healthy Diet for Indians: Foods That Protect Your Heart', anchor: 'Heart-healthy diet tips for recovery and prevention' },
+    { slug: 'beating-heart-cabg-vs-conventional', title: 'Off-Pump (Beating Heart) CABG vs. Conventional Bypass Surgery', anchor: 'Off-pump vs. conventional CABG — which technique is safer?' },
+  ],
+  'beating-heart-cabg-vs-conventional': [
+    { slug: 'what-is-bypass-surgery', title: 'What is Bypass Surgery (CABG)? A Complete Guide', anchor: 'Complete guide to coronary artery bypass grafting (CABG)' },
+    { slug: 'recovery-after-open-heart-surgery', title: 'Recovery After Open Heart Surgery: What to Expect', anchor: 'Recovery timeline after bypass surgery' },
+    { slug: 'signs-you-need-a-cardiac-surgeon', title: '10 Signs You Need to See a Cardiac Surgeon', anchor: '10 signs it may be time to consult a cardiac surgeon' },
+  ],
+  'valve-repair-vs-replacement': [
+    { slug: 'signs-you-need-a-cardiac-surgeon', title: '10 Signs You Need to See a Cardiac Surgeon', anchor: 'Warning signs that you need to see a cardiac surgeon' },
+    { slug: 'recovery-after-open-heart-surgery', title: 'Recovery After Open Heart Surgery: What to Expect', anchor: 'What to expect during recovery after valve surgery' },
+    { slug: 'what-is-bypass-surgery', title: 'What is Bypass Surgery (CABG)? A Complete Guide', anchor: 'Guide to bypass surgery if you also have coronary artery disease' },
+  ],
+  'heart-healthy-diet-india': [
+    { slug: 'recovery-after-open-heart-surgery', title: 'Recovery After Open Heart Surgery: What to Expect', anchor: 'Dietary guidance during recovery after heart surgery' },
+    { slug: 'signs-you-need-a-cardiac-surgeon', title: '10 Signs You Need to See a Cardiac Surgeon', anchor: 'Know the warning signs that require a cardiac surgeon' },
+    { slug: 'what-is-bypass-surgery', title: 'What is Bypass Surgery (CABG)? A Complete Guide', anchor: 'What is CABG and when is it needed?' },
+  ],
+}
+
+const posts: Record<string, { title: string; date: string; isoDate: string; dateModified: string; readTime: string; category: string; content: string; description: string; faqs: { q: string; a: string }[] }> = {
   'what-is-bypass-surgery': {
     title: 'What is Bypass Surgery (CABG)? A Complete Guide',
     date: 'January 15, 2025',
     isoDate: '2025-01-15',
+    dateModified: TODAY,
     readTime: '8 min read',
     category: 'Surgery Guide',
-    description: 'Learn what coronary artery bypass grafting (CABG) involves, who needs it, and how Dr. R.K. Sharma\'s beating heart technique reduces risk. Call +91-7231044444 to consult.',
+    description: 'What is bypass surgery (CABG)? A complete guide to who needs it, off-pump technique, and recovery — by Dr. R.K. Sharma, cardiac surgeon at Eternal Hospital Jaipur.',
     faqs: [
-      { q: 'What is CABG (bypass surgery)?', a: 'Coronary Artery Bypass Grafting (CABG) is an open-heart surgery where a healthy blood vessel from another part of the body is used to create a new pathway around a blocked coronary artery, restoring blood flow to the heart muscle.' },
+      { q: 'What is bypass surgery?', a: 'Coronary Artery Bypass Grafting (CABG) is an open-heart surgery where a healthy blood vessel from another part of the body is used to create a new pathway around a blocked coronary artery, restoring blood flow to the heart muscle.' },
       { q: 'Who needs bypass surgery?', a: 'CABG is recommended for patients with severe blockages in multiple coronary arteries, left main artery disease, failed angioplasty or stenting, diabetes with multi-vessel disease, or reduced heart function combined with coronary disease.' },
-      { q: 'What is beating heart (off-pump) bypass surgery?', a: 'Beating heart CABG is performed while the heart continues to beat, without using a heart-lung machine. Dr. Sharma performs 75% of his CABG surgeries this way, which reduces the risk of stroke, cognitive decline, and blood transfusion.' },
       { q: 'How long does bypass surgery take?', a: 'Bypass surgery typically takes 3–5 hours depending on the number of grafts needed. Most patients stay in the hospital for 5–7 days and can return to full activity within 3 months.' },
-      { q: 'How do I book a consultation for bypass surgery in Jaipur?', a: 'Call Dr. R.K. Sharma at Eternal Hospital, Jaipur on +91-7231044444. OPD hours are Monday–Saturday, 10:00 AM – 4:00 PM.' },
+      { q: 'What is off-pump CABG?', a: 'Off-pump CABG is bypass surgery performed while the heart continues to beat, without using a heart-lung machine. Dr. Sharma performs 75% of his CABG surgeries this way, reducing the risk of stroke, cognitive decline, and blood transfusion.' },
+      { q: 'How long is recovery after bypass surgery?', a: 'Most patients are discharged in 5–7 days, return to light activities in 4–6 weeks, and achieve full recovery by 3 months. Off-pump patients often recover faster.' },
     ],
     content: `
 ## What is Coronary Artery Bypass Grafting (CABG)?
@@ -71,9 +107,10 @@ If you have been told you need bypass surgery, or have symptoms of coronary arte
     title: '10 Signs You Need to See a Cardiac Surgeon',
     date: 'January 8, 2025',
     isoDate: '2025-01-08',
+    dateModified: TODAY,
     readTime: '6 min read',
     category: 'Patient Education',
-    description: 'Persistent chest pain, severe valve disease, or failed stenting? Know the 10 warning signs that mean you should see a cardiac surgeon. Call Dr. R.K. Sharma at +91-7231044444.',
+    description: '10 warning signs you need a cardiac surgeon — chest pain, valve disease, failed stenting & more. By Dr. R.K. Sharma, cardiac surgeon at Eternal Hospital Jaipur.',
     faqs: [
       { q: 'When should I see a cardiac surgeon instead of a cardiologist?', a: 'You should see a cardiac surgeon when your condition requires surgical intervention — such as severe multi-vessel coronary disease, significant valve disease, aortic aneurysm, or congenital heart defects that cannot be managed with medication or angioplasty alone.' },
       { q: 'Can chest pain be a sign that I need heart surgery?', a: 'Yes. Persistent chest pain (angina) despite maximum medical therapy, especially when angioplasty options are limited, may indicate the need for bypass surgery or other cardiac surgical intervention.' },
@@ -124,9 +161,10 @@ With 44+ years of experience and 7,000+ surgeries, Dr. Sharma offers expert eval
     title: 'Recovery After Open Heart Surgery: What to Expect',
     date: 'December 22, 2024',
     isoDate: '2024-12-22',
+    dateModified: TODAY,
     readTime: '10 min read',
     category: 'Recovery',
-    description: 'A complete week-by-week guide to recovery after open heart surgery — from ICU to returning to normal life. By Dr. R.K. Sharma, Eternal Hospital Jaipur. Call +91-7231044444.',
+    description: 'Week-by-week recovery guide after open heart surgery — ICU to full activity. By Dr. R.K. Sharma, cardiac surgeon at Eternal Hospital Jaipur. Call +91-7231044444.',
     faqs: [
       { q: 'How long does recovery take after open heart surgery?', a: 'Most patients are discharged within 5–7 days. Light activities can resume in 4–6 weeks, and full physical activity is typically possible by 3 months.' },
       { q: 'When can I drive after open heart surgery?', a: 'Most patients can resume driving 4–6 weeks after surgery, once they are off strong pain medications and can comfortably wear a seatbelt.' },
@@ -197,9 +235,10 @@ For any concerns during recovery, call the hospital at **+91-7231044444**.
     title: 'Off-Pump (Beating Heart) CABG vs. Conventional Bypass Surgery',
     date: 'December 10, 2024',
     isoDate: '2024-12-10',
+    dateModified: TODAY,
     readTime: '7 min read',
     category: 'Surgery Guide',
-    description: 'Compare off-pump (beating heart) CABG with conventional on-pump bypass surgery. Dr. R.K. Sharma explains the benefits, risks, and outcomes. Call +91-7231044444 to consult.',
+    description: 'Off-pump vs. on-pump CABG: benefits, risks, and outcomes compared. By Dr. R.K. Sharma, cardiac surgeon at Eternal Hospital Jaipur. Call +91-7231044444.',
     faqs: [
       { q: 'What is off-pump (beating heart) CABG?', a: 'Off-pump CABG is bypass surgery performed while the heart continues to beat, without using a heart-lung machine. Specialized stabilizers hold the heart steady while the surgeon grafts new blood vessels around the blocked arteries.' },
       { q: 'Is beating heart surgery safer than conventional bypass?', a: 'For many patients, off-pump CABG carries lower risks of stroke, kidney injury, and cognitive decline because it avoids the heart-lung machine. However, both techniques are safe in experienced hands.' },
@@ -262,9 +301,10 @@ If you have been advised bypass surgery, Dr. Sharma can explain which technique 
     title: 'Valve Repair vs. Valve Replacement: Which is Better?',
     date: 'November 28, 2024',
     isoDate: '2024-11-28',
+    dateModified: TODAY,
     readTime: '6 min read',
     category: 'Surgery Guide',
-    description: 'Heart valve repair vs. replacement — understand the differences, pros and cons, and how Dr. R.K. Sharma decides the best approach for each patient. Call +91-7231044444.',
+    description: 'Valve repair vs. replacement — pros, cons, and how Dr. R.K. Sharma chooses the best approach. By cardiac surgeon at Eternal Hospital Jaipur. Call +91-7231044444.',
     faqs: [
       { q: 'Is valve repair better than valve replacement?', a: 'Valve repair is generally preferred when feasible because it preserves the patient\'s own valve, avoids lifelong blood thinners (in most cases), and has lower long-term complication rates. However, not all valves can be repaired — severely damaged or calcified valves may need replacement.' },
       { q: 'What types of replacement valves are available?', a: 'There are two main types: mechanical valves (made of durable materials, last a lifetime but require lifelong blood thinners) and bioprosthetic valves (made from animal tissue, do not require long-term blood thinners but may need replacement after 10–15 years).' },
@@ -331,9 +371,10 @@ If you have been diagnosed with valve disease, consult Dr. R.K. Sharma for an ex
     title: 'Heart-Healthy Diet for Indians: Foods That Protect Your Heart',
     date: 'November 15, 2024',
     isoDate: '2024-11-15',
+    dateModified: TODAY,
     readTime: '5 min read',
     category: 'Prevention',
-    description: 'Evidence-based heart-healthy diet tips for Indians — which traditional foods help, what to avoid, and daily habits to prevent heart disease. By Dr. R.K. Sharma, Jaipur.',
+    description: 'Heart-healthy Indian diet: foods that protect your heart, what to avoid, and daily habits. By Dr. R.K. Sharma, cardiac surgeon at Eternal Hospital Jaipur.',
     faqs: [
       { q: 'What is the best cooking oil for heart health in India?', a: 'Mustard oil, groundnut (peanut) oil, and rice bran oil are good choices for everyday Indian cooking. Olive oil is excellent for salads and low-heat cooking. Avoid reusing cooking oil and limit ghee, coconut oil, and palm oil.' },
       { q: 'Is ghee bad for the heart?', a: 'Ghee in moderation (1–2 teaspoons per day) is not harmful for most people. However, excessive ghee consumption raises LDL cholesterol. Patients with existing heart disease should limit ghee and prefer healthier oils.' },
@@ -414,6 +455,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${post.title} | Dr. Ravindra Kumar Sharma – Cardiac Surgeon Jaipur`,
     description: post.description,
     alternates: { canonical: `/blog/${slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url: `https://drravindrasharma.com/blog/${slug}`,
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: post.title }],
+    },
   }
 }
 
@@ -430,6 +477,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         title={post.title}
         slug={slug}
         datePublished={post.isoDate}
+        dateModified={post.dateModified}
         description={post.description}
       />
       <BreadcrumbSchema postTitle={post.title} slug={slug} />
@@ -442,10 +490,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           Back to Blog
         </Link>
 
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 flex-wrap mb-4">
           <span className="font-inter text-xs text-[#C41E3A] bg-[#C41E3A]/10 px-3 py-1 rounded-full">{post.category}</span>
           <span className="flex items-center gap-1 font-inter text-xs text-[#A0AEC0]"><Calendar className="w-3 h-3" />{post.date}</span>
           <span className="flex items-center gap-1 font-inter text-xs text-[#A0AEC0]"><Clock className="w-3 h-3" />{post.readTime}</span>
+          <span className="font-inter text-xs text-[#A0AEC0]">Last updated: {post.dateModified}</span>
         </div>
 
         <h1 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">{post.title}</h1>
@@ -467,6 +516,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             return <p key={i} className="font-inter text-[#A0AEC0] text-sm leading-relaxed">{line}</p>
           })}
         </div>
+
+        {relatedPosts[slug] && relatedPosts[slug].length > 0 && (
+          <div className="mt-16 border-t border-white/10 pt-10">
+            <h2 className="font-playfair text-2xl font-bold text-white mb-6">Related Articles</h2>
+            <ul className="space-y-4">
+              {relatedPosts[slug].map((related) => (
+                <li key={related.slug}>
+                  <Link
+                    href={`/blog/${related.slug}`}
+                    className="font-inter text-sm text-[#C41E3A] hover:text-[#D4AF37] transition-colors underline underline-offset-2"
+                  >
+                    {related.anchor}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="mt-16 p-8 bg-gradient-to-r from-[#C41E3A]/10 to-[#D4AF37]/10 border border-white/10 rounded-2xl">
           <h3 className="font-playfair text-2xl font-bold text-white mb-3">Consult Dr. R.K. Sharma</h3>

@@ -3,7 +3,7 @@ import { ContactClient } from '@/components/sections/ContactClient'
 
 export const metadata: Metadata = {
   title: 'Contact | Dr. Ravindra Kumar Sharma – Cardiac Surgeon Eternal Hospital Jaipur',
-  description: 'Contact Dr. Ravindra Kumar Sharma at Eternal Hospital, Near Airport Circle, Sanganer, Jaipur 302011. Call +91-7231044444 for appointments, second opinions, or enquiries.',
+  description: 'Contact Dr. Ravindra Kumar Sharma at Eternal Hospital, Near Airport Circle, Sanganer, Jaipur. OPD Mon–Sat 10 AM–4 PM. Call +91-7231044444 or WhatsApp now.',
   alternates: { canonical: '/contact' },
 }
 
