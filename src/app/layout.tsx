@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     default: 'Dr. Ravindra Kumar Sharma | Best Cardiac Surgeon in Jaipur',
     template: '%s | Dr. Ravindra Kumar Sharma – Best Cardiac Surgeon in Jaipur',
   },
-  description: 'Director of CTVS at Eternal Hospital Jaipur. 44+ years experience, 7,000+ open heart surgeries. Call +91-7231044444 to book your consultation.',
+  description: 'Director of CTVS at Eternal Hospital Jaipur. 44+ years experience & 7,000+ open heart surgeries. Call +91-7231044444 to book your consultation today.',
   keywords: ['best cardiac surgeon in jaipur', 'cardiac surgeon jaipur', 'Dr. Ravindra Kumar Sharma', 'Dr. R.K. Sharma cardiac surgeon', 'heart surgeon jaipur', 'bypass surgery jaipur', 'CABG surgeon jaipur', 'CTVS surgeon jaipur', 'Eternal Hospital cardiac surgery'],
   authors: [{ name: 'Dr. Ravindra Kumar Sharma' }],
   creator: 'Dr. Ravindra Kumar Sharma',
