@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     default: 'Dr. Ravindra Kumar Sharma | Best Cardiac Surgeon in Jaipur',
     template: '%s | Dr. Ravindra Kumar Sharma – Best Cardiac Surgeon in Jaipur',
   },
-  description: 'Dr. R.K. Sharma is the Director of CTVS at Eternal Hospital, Jaipur. 44+ years experience, 7,000+ open heart surgeries. Specialist in CABG, Valve Surgery, Aortic Surgery.',
+  description: 'Director of CTVS at Eternal Hospital Jaipur. 44+ years experience, 7,000+ open heart surgeries. Call +91-7231044444 to book your consultation.',
   keywords: ['best cardiac surgeon in jaipur', 'cardiac surgeon jaipur', 'Dr. Ravindra Kumar Sharma', 'Dr. R.K. Sharma cardiac surgeon', 'heart surgeon jaipur', 'bypass surgery jaipur', 'CABG surgeon jaipur', 'CTVS surgeon jaipur', 'Eternal Hospital cardiac surgery'],
   authors: [{ name: 'Dr. Ravindra Kumar Sharma' }],
   creator: 'Dr. Ravindra Kumar Sharma',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } },
   verification: { google: 'add-your-google-site-verification-here' },
-  alternates: { canonical: 'https://drravindrasharma.com' },
+  alternates: { canonical: '/' },
 }
 
 export default function RootLayout({
