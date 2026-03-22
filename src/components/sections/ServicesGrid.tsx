@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Activity, Shield, Minimize2, Network, Baby, ChevronDown } from 'lucide-react'
+import { Heart, Activity, Shield, Minimize2, Network, Baby, ChevronDown, Wind } from 'lucide-react'
 
 const services = [
   {
@@ -51,6 +51,14 @@ const services = [
     description: "Surgical correction of congenital heart defects in children and adults, including atrial and ventricular septal defects (ASD/VSD), tetralogy of Fallot, patent ductus arteriosus, and other structural abnormalities. Dr. Sharma's vast experience ensures optimal outcomes for these complex cases.",
     highlights: ['ASD & VSD closure', 'Tetralogy of Fallot repair', 'PDA ligation', 'Complex reconstructions'],
     color: '#F472B6',
+  },
+  {
+    icon: Wind,
+    title: 'Lung Surgery',
+    subtitle: 'Thoracic Surgical Care',
+    description: 'Comprehensive thoracic surgery for lung conditions including lung cancer, pleural diseases, chest wall tumors, and mediastinal masses. Dr. Sharma performs lobectomies, pneumonectomies, decortications, and other thoracic procedures with precision and extensive experience.',
+    highlights: ['Lung cancer surgery', 'Lobectomy & pneumonectomy', 'Pleural disease management', 'Chest wall procedures'],
+    color: '#38BDF8',
   },
 ]
 

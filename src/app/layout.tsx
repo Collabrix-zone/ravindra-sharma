@@ -6,6 +6,7 @@ import Footer from "@/components/sections/Footer";
 import { PhysicianSchema } from "@/components/seo/PhysicianSchema";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import ChatBubble from "@/components/sections/ChatBubble";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -72,6 +73,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ChatBubble />
         <PhysicianSchema />
         <SpeedInsights />
         <Analytics />
