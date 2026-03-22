@@ -6,7 +6,13 @@ import { FAQSchema } from '@/components/seo/FAQSchema'
 
 export const metadata: Metadata = {
   title: 'Cardiac Surgery Services in Jaipur',
-  description: 'Cardiac surgery services in Jaipur by Dr. R.K. Sharma: CABG, valve surgery, aortic surgery, minimally invasive & congenital heart surgery. Call +91-7231044444.',
+  description: 'Cardiac surgery services in Jaipur by Dr. Ravindra Kumar Sharma: CABG, valve surgery, aortic surgery, lung surgery, minimally invasive & congenital heart surgery. Call +91-7231044444.',
+  keywords: [
+    'cardiac surgery services jaipur', 'heart surgery jaipur', 'bypass surgery jaipur', 'CABG surgery jaipur',
+    'valve surgery jaipur', 'lung surgery jaipur', 'aortic surgery jaipur', 'open heart surgery jaipur',
+    'minimally invasive heart surgery jaipur', 'congenital heart surgery jaipur',
+    'ravindra sharma services', 'best cardiac surgeon services', 'heart operation jaipur',
+  ],
   alternates: { canonical: '/services' },
 }
 
