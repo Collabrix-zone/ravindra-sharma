@@ -1,24 +1,39 @@
 'use client'
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, MapPin, Clock, Send } from 'lucide-react'
+import { Phone, MapPin, Clock, MessageCircle } from 'lucide-react'
 
 const contactInfo = [
   {
     icon: Phone,
-    label: 'Phone',
+    label: 'Hospital Phone',
     value: '+91-7231044444\n0141-3120000',
     href: 'tel:+917231044444',
     color: '#C41E3A',
     ariaLabel: 'Call +91 72310 44444',
   },
   {
+    icon: Phone,
+    label: 'Personal Phone',
+    value: '+91-9928086788',
+    href: 'tel:+919928086788',
+    color: '#C41E3A',
+    ariaLabel: 'Call personal number +91 99280 86788',
+  },
+  {
     icon: MapPin,
-    label: 'Address',
+    label: 'Hospital Address',
     value: 'Eternal Hospital, Near Airport Circle,\nSanganer, Jaipur, Rajasthan 302011',
     href: 'https://maps.google.com/?q=Eternal+Hospital+Sanganer+Jaipur',
     color: '#D4AF37',
     ariaLabel: 'Get directions to Eternal Hospital, Jaipur',
+  },
+  {
+    icon: MapPin,
+    label: 'Home Address',
+    value: 'D-864, Amit Bhardwaj Marg,\nMalviya Nagar, Jaipur 302017',
+    href: 'https://maps.app.goo.gl/cpzFF2ZSaFhXHP796',
+    color: '#D4AF37',
+    ariaLabel: 'Get directions to home address — open in Google Maps',
   },
   {
     icon: Clock,
@@ -31,9 +46,6 @@ const contactInfo = [
 ]
 
 export function ContactClient() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
-
   return (
     <>
       {/* Hero */}
@@ -66,7 +78,7 @@ export function ContactClient() {
             transition={{ delay: 0.4 }}
             className="font-inter text-base sm:text-lg text-[#CBD5E0] max-w-2xl mx-auto leading-relaxed"
           >
-            Reach out to Dr. Sharma&apos;s team at Eternal Hospital, Jaipur for appointments, queries, or emergency consultations.
+            Call or WhatsApp Dr. Sharma&apos;s team at Eternal Hospital, Jaipur for appointments, queries, or emergency consultations.
           </motion.p>
         </div>
       </section>
@@ -76,10 +88,10 @@ export function ContactClient() {
         aria-labelledby="contact-info-heading"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 id="contact-info-heading" className="sr-only">Contact information and message form</h2>
+          <h2 id="contact-info-heading" className="sr-only">Contact information</h2>
 
           {/* Contact cards */}
-          <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-16" role="list">
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" role="list">
             {contactInfo.map((c, i) => {
               const Icon = c.icon
               const cardContent = (
@@ -122,82 +134,30 @@ export function ContactClient() {
             })}
           </ul>
 
-          {/* Contact form */}
-          <div className="max-w-2xl mx-auto">
-            {submitted ? (
-              <div
-                className="text-center py-16"
-                role="alert"
-                aria-live="polite"
-              >
-                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4" aria-hidden="true">
-                  <Send className="w-8 h-8 text-green-400" aria-hidden="true" />
-                </div>
-                <h3 className="font-playfair text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="font-inter text-[#CBD5E0]">We will get back to you shortly.</p>
-              </div>
-            ) : (
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8">
-                <h3 className="font-playfair text-2xl font-bold text-white mb-6">Send a Message</h3>
-                <form
-                  onSubmit={e => { e.preventDefault(); setSubmitted(true) }}
-                  className="space-y-5"
-                  noValidate
-                >
-                  <div>
-                    <label htmlFor="contact-name" className="font-inter text-sm font-medium text-[#CBD5E0] mb-2 block">
-                      Name <span aria-hidden="true">*</span><span className="sr-only">(required)</span>
-                    </label>
-                    <input
-                      id="contact-name"
-                      required
-                      value={form.name}
-                      onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-inter text-white text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1120] transition-colors placeholder:text-white/30 min-h-[48px]"
-                      placeholder="Your name"
-                      autoComplete="name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-email" className="font-inter text-sm font-medium text-[#CBD5E0] mb-2 block">
-                      Email <span aria-hidden="true">*</span><span className="sr-only">(required)</span>
-                    </label>
-                    <input
-                      id="contact-email"
-                      required
-                      type="email"
-                      value={form.email}
-                      onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-inter text-white text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1120] transition-colors placeholder:text-white/30 min-h-[48px]"
-                      placeholder="your@email.com"
-                      autoComplete="email"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-message" className="font-inter text-sm font-medium text-[#CBD5E0] mb-2 block">
-                      Message <span aria-hidden="true">*</span><span className="sr-only">(required)</span>
-                    </label>
-                    <textarea
-                      id="contact-message"
-                      required
-                      rows={5}
-                      value={form.message}
-                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-inter text-white text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1120] transition-colors resize-none placeholder:text-white/30"
-                      placeholder="How can we help?"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-[#C41E3A] to-[#a01830] hover:from-[#D4AF37] hover:to-[#b8952d] text-white font-inter font-semibold py-4 rounded-xl transition-all flex items-center justify-center gap-2 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1120] min-h-[52px]"
-                  >
-                    <Send className="w-4 h-4" aria-hidden="true" />
-                    Send Message
-                  </button>
-                </form>
-              </div>
-            )}
-          </div>
+          {/* CTA buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-xl mx-auto flex flex-col sm:flex-row gap-4"
+          >
+            <a
+              href="tel:+917231044444"
+              className="flex-1 inline-flex items-center justify-center gap-2 font-inter text-base font-semibold text-white bg-gradient-to-r from-[#C41E3A] to-[#a01830] hover:from-[#D4AF37] hover:to-[#b8952d] px-6 py-4 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1120] min-h-[52px]"
+            >
+              <Phone className="w-5 h-5" aria-hidden="true" />
+              Call Now
+            </a>
+            <a
+              href="https://wa.me/917231044444"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 inline-flex items-center justify-center gap-2 font-inter text-base font-semibold text-white bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/30 px-6 py-4 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1120] min-h-[52px]"
+            >
+              <MessageCircle className="w-5 h-5" aria-hidden="true" />
+              WhatsApp Us
+            </a>
+          </motion.div>
         </div>
       </section>
     </>

@@ -5,7 +5,7 @@ import { ServicesFAQ } from '@/components/sections/ServicesFAQ'
 import { FAQSchema } from '@/components/seo/FAQSchema'
 
 export const metadata: Metadata = {
-  title: 'Cardiac Surgery Services in Jaipur | Dr. R.K. Sharma',
+  title: 'Cardiac Surgery Services in Jaipur',
   description: 'Cardiac surgery services in Jaipur by Dr. R.K. Sharma: CABG, valve surgery, aortic surgery, minimally invasive & congenital heart surgery. Call +91-7231044444.',
   alternates: { canonical: '/services' },
 }

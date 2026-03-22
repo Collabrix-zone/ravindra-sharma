@@ -42,9 +42,10 @@ const relatedPosts: Record<string, { slug: string; title: string; anchor: string
   ],
 }
 
-const posts: Record<string, { title: string; date: string; isoDate: string; dateModified: string; readTime: string; category: string; content: string; description: string; faqs: { q: string; a: string }[] }> = {
+const posts: Record<string, { title: string; seoTitle: string; date: string; isoDate: string; dateModified: string; readTime: string; category: string; content: string; description: string; faqs: { q: string; a: string }[] }> = {
   'what-is-bypass-surgery': {
     title: 'What is Bypass Surgery (CABG)? A Complete Guide',
+    seoTitle: 'What is Bypass Surgery (CABG)?',
     date: 'January 15, 2025',
     isoDate: '2025-01-15',
     dateModified: TODAY,
@@ -105,6 +106,7 @@ If you have been told you need bypass surgery, or have symptoms of coronary arte
   },
   'signs-you-need-a-cardiac-surgeon': {
     title: '10 Signs You Need to See a Cardiac Surgeon',
+    seoTitle: '10 Signs You Need a Cardiac Surgeon',
     date: 'January 8, 2025',
     isoDate: '2025-01-08',
     dateModified: TODAY,
@@ -159,6 +161,7 @@ With 44+ years of experience and 7,000+ surgeries, Dr. Sharma offers expert eval
   },
   'recovery-after-open-heart-surgery': {
     title: 'Recovery After Open Heart Surgery: What to Expect',
+    seoTitle: 'Recovery After Open Heart Surgery',
     date: 'December 22, 2024',
     isoDate: '2024-12-22',
     dateModified: TODAY,
@@ -233,6 +236,7 @@ For any concerns during recovery, call the hospital at **+91-7231044444**.
   },
   'beating-heart-cabg-vs-conventional': {
     title: 'Off-Pump (Beating Heart) CABG vs. Conventional Bypass Surgery',
+    seoTitle: 'Beating Heart vs. Conventional CABG',
     date: 'December 10, 2024',
     isoDate: '2024-12-10',
     dateModified: TODAY,
@@ -299,6 +303,7 @@ If you have been advised bypass surgery, Dr. Sharma can explain which technique 
   },
   'valve-repair-vs-replacement': {
     title: 'Valve Repair vs. Valve Replacement: Which is Better?',
+    seoTitle: 'Valve Repair vs. Replacement',
     date: 'November 28, 2024',
     isoDate: '2024-11-28',
     dateModified: TODAY,
@@ -369,6 +374,7 @@ If you have been diagnosed with valve disease, consult Dr. R.K. Sharma for an ex
   },
   'heart-healthy-diet-india': {
     title: 'Heart-Healthy Diet for Indians: Foods That Protect Your Heart',
+    seoTitle: 'Heart-Healthy Diet for Indians',
     date: 'November 15, 2024',
     isoDate: '2024-11-15',
     dateModified: TODAY,
@@ -452,7 +458,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = posts[slug]
   if (!post) return {}
   return {
-    title: `${post.title} | Dr. Ravindra Kumar Sharma – Cardiac Surgeon Jaipur`,
+    title: post.seoTitle,
     description: post.description,
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
