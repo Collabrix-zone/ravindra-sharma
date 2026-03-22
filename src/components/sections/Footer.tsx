@@ -58,6 +58,14 @@ export default function Footer() {
                 +91-7231044444
               </a>
               <a
+                href="tel:+919928086788"
+                className="flex items-center gap-2 font-inter text-sm text-[#CBD5E0] hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] rounded-sm min-h-[44px]"
+                aria-label="Call personal number +91 99280 86788"
+              >
+                <Phone className="w-4 h-4 text-[#C41E3A] flex-shrink-0" aria-hidden="true" />
+                +91-9928086788 (Personal)
+              </a>
+              <a
                 href="https://maps.google.com/?q=Eternal+Hospital+Sanganer+Jaipur"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -66,6 +74,16 @@ export default function Footer() {
               >
                 <MapPin className="w-4 h-4 text-[#D4AF37] flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <span>Eternal Hospital, Near Airport Circle,<br />Sanganer, Jaipur 302011</span>
+              </a>
+              <a
+                href="https://maps.app.goo.gl/cpzFF2ZSaFhXHP796"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 font-inter text-sm text-[#CBD5E0] hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] rounded-sm"
+                aria-label="D-864, Amit Bhardwaj Marg, Malviya Nagar, Jaipur — open in Google Maps"
+              >
+                <MapPin className="w-4 h-4 text-[#D4AF37] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <span>D-864, Amit Bhardwaj Marg,<br />Malviya Nagar, Jaipur 302017</span>
               </a>
               <div className="flex items-center gap-2 font-inter text-sm text-[#CBD5E0]">
                 <Clock className="w-4 h-4 text-[#D4AF37] flex-shrink-0" aria-hidden="true" />

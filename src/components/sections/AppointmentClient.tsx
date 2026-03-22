@@ -16,10 +16,26 @@ const opd = [
 export function AppointmentClient() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', issue: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setSubmitting(true)
+    setError('')
+    try {
+      const res = await fetch('/api/appointment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error()
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong. Please try again or call us directly.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -251,12 +267,16 @@ export function AppointmentClient() {
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 font-inter text-white text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1120] transition-colors resize-none placeholder:text-white/30"
                     />
                   </div>
+                  {error && (
+                    <p className="font-inter text-sm text-red-400 text-center" role="alert">{error}</p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-[#C41E3A] to-[#a01830] hover:from-[#D4AF37] hover:to-[#b8952d] text-white font-inter font-semibold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1120] min-h-[52px]"
+                    disabled={submitting}
+                    className="w-full bg-gradient-to-r from-[#C41E3A] to-[#a01830] hover:from-[#D4AF37] hover:to-[#b8952d] text-white font-inter font-semibold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C41E3A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D1120] min-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="w-4 h-4" aria-hidden="true" />
-                    Submit Appointment Request
+                    {submitting ? 'Submitting...' : 'Submit Appointment Request'}
                   </button>
                   <p className="font-inter text-xs text-[#CBD5E0] text-center">
                     For urgent matters, please call directly:{' '}
