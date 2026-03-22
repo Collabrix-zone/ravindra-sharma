@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Activity, Heart, Shield, Minimize2, Network, Baby, ArrowRight } from "lucide-react";
+import { Activity, Heart, Shield, Minimize2, Network, Baby, Wind, ArrowRight } from "lucide-react";
 
 const SERVICES = [
   { Icon: Activity, color: "#C41E3A", title: "Bypass Surgery (CABG)", tag: "Most Common", description: "Off-pump beating heart technique used in 75% of ~5,000 CABG surgeries. Reduced complications, faster recovery, lower stroke risk." },
@@ -11,6 +11,7 @@ const SERVICES = [
   { Icon: Minimize2, color: "#34D399", title: "Minimally Invasive", tag: "", description: "Video-assisted procedures with smaller incisions, less pain, shorter stays, and faster return to daily life." },
   { Icon: Network, color: "#A78BFA", title: "Peripheral Vascular", tag: "", description: "Peripheral arterial disease, carotid artery disease, venous disorders — bypass, endarterectomy, endovascular." },
   { Icon: Baby, color: "#F472B6", title: "Congenital Heart", tag: "", description: "Surgical correction of ASD, VSD, Tetralogy of Fallot, PDA and structural heart defects in children and adults." },
+  { Icon: Wind, color: "#38BDF8", title: "Lung Surgery", tag: "", description: "Thoracic surgery for lung cancer, pleural diseases, chest wall tumors — lobectomy, pneumonectomy, and decortication." },
 ];
 
 export default function ServicesSection() {

@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Phone, Calendar, ChevronDown, Shield } from 'lucide-react'
+import AISearchBar from '@/components/sections/AISearchBar'
 
 const ECGHeartbeat = dynamic(() => import('@/components/3d/ECGHeartbeat'), {
   ssr: false,
@@ -112,7 +113,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.55 }}
-              className="flex items-center justify-center gap-3"
+              className="flex items-center justify-center gap-3 mb-8"
             >
               <a
                 href="tel:+917231044444"
@@ -124,6 +125,15 @@ export default function Hero() {
               </a>
               <span className="text-[#2D3748] text-xs" aria-hidden="true">·</span>
               <span className="font-inter text-xs text-[#4A5568]">Mon–Sat, 10AM–4PM</span>
+            </motion.div>
+
+            {/* AI Search Bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+            >
+              <AISearchBar />
             </motion.div>
           </div>
         </div>
