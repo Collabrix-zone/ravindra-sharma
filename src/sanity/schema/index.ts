@@ -10,6 +10,7 @@ import { doctorProfile } from './doctorProfile'
 import { teamMember } from './teamMember'
 import { gallery } from './gallery'
 import { pageContent } from './pageContent'
+import { video } from './video'
 
 export const schemaTypes = [
   // Content
@@ -20,6 +21,7 @@ export const schemaTypes = [
   doctorProfile,
   teamMember,
   gallery,
+  video,
   pageContent,
   announcement,
   // Forms / Leads

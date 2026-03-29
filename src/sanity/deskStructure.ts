@@ -32,6 +32,10 @@ export const deskStructure = (S: StructureBuilder) =>
                 .schemaType('gallery')
                 .child(S.documentTypeList('gallery').title('Gallery')),
               S.listItem()
+                .title('Videos')
+                .schemaType('video')
+                .child(S.documentTypeList('video').title('Videos')),
+              S.listItem()
                 .title('Announcements')
                 .schemaType('announcement')
                 .child(S.documentTypeList('announcement').title('Announcements')),
