@@ -81,6 +81,14 @@ export const queries = {
     _id, name, phone, email, condition, submittedAt, status, appointmentDate, notes
   }`,
 
+  // Videos
+  videos: `*[_type == "video" && published == true] | order(order asc) {
+    _id, title, platform, url, description, thumbnail, featured
+  }`,
+  featuredVideos: `*[_type == "video" && published == true && featured == true] | order(order asc) {
+    _id, title, platform, url, description, thumbnail
+  }`,
+
   // Site Settings
   siteSettings: `*[_type == "siteSettings"][0] {
     opdSchedule, phone, address, doctorPhoto
